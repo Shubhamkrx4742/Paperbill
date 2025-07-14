@@ -483,6 +483,12 @@
         .icon-container {
             margin: 0 auto;
         }
+        /* NEW: Center the download button */
+        .industry-download-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
         /* Pricing Section Alignment */
         #pricing .pricing-cards {
             display: flex;
@@ -1288,7 +1294,7 @@
             <div class="industry-content" data-industry="mobile">
                 <div class="industry-row">
                     <div class="industry-info">
-                        <h3>Mobile Shop Billing Software</h3>
+                        <h3>Mobile Shop Billing Software</h极
                         <p>PaperBill Mobile Shop Billing Software is tailored for electronics retailers specializing in mobile phones and accessories. It helps manage IMEI numbers, track accessories inventory, and handle warranty claims efficiently.</p>
                         <p>With specialized features for the mobile industry, it helps retailers manage complex inventory and provide excellent customer service.</p>
                         <button class="primary-btn">Learn More About Mobile Solution</button>
@@ -1302,9 +1308,12 @@
                 </div>
             </div>
             
-            <button class="primary-btn" id="downloadIndustryBtn">
-                <i class="fas fa-download"></i> Download for Your Industry
-            </button>
+            <!-- Centered Download Button -->
+            <div class="industry-download-container">
+                <button class="primary-btn" id="downloadIndustryBtn">
+                    <i class="fas fa-download"></i> Download for Your Industry
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1312,7 +1321,7 @@
     <section id="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Retail Shop Pricing Plans</h2>
+                <极2>Retail Shop Pricing Plans</h2>
                 <p>Affordable plans for businesses of all sizes</p>
             </div>
             
@@ -1374,7 +1383,7 @@
                         <div class="price-annual">
                             <div class="price">¥440</div>
                             <div class="price-period">per month, billed annually</div>
-                        </div>
+                        </极>
                     </div>
                     <ul class="features-list">
                         <li>
@@ -1692,6 +1701,6 @@
     </div>
 
     <script src="script.js"></script>
-
+  
 </body>
 </html>
