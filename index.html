@@ -71,7 +71,8 @@
             font-size: 1.15rem;
             color: #5a6270;
         }
-        /* Navbar Modernization */
+        
+        /* Navbar Modernization with Improved Buttons */
         .main-navbar {
             width: 100%;
             background: rgba(255,255,255,0.85);
@@ -141,6 +142,60 @@
             color: #23272f;
             cursor: pointer;
         }
+        
+        /* Improved Navbar Buttons */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-btn {
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-btn:focus {
+            outline: 2px solid #4CAF50;
+            outline-offset: 2px;
+        }
+        .nav-btn:hover {
+            transform: scale(1.045);
+            box-shadow: 0 6px 24px rgba(44, 62, 80, 0.12);
+            filter: brightness(1.03);
+        }
+        .login-btn {
+            background: transparent;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+        .login-btn:hover {
+            background: rgba(76, 175, 80, 0.08);
+        }
+        .signup-btn {
+            background: linear-gradient(90deg, #4caf50 0%, #2196f3 100%);
+            color: white;
+        }
+        .signup-btn:hover {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+        }
+        .logout-btn {
+            background: #f44336;
+            color: white;
+            padding: 8px 20px;
+        }
+        .logout-btn:hover {
+            background: #d32f2f;
+        }
+
         @media (max-width: 900px) {
             .navbar-menu {
                 gap: 18px;
@@ -151,18 +206,18 @@
                 display: block;
             }
             .navbar-menu {
-            position: absolute;
+                position: absolute;
                 top: 64px;
                 left: 0;
-            right: 0;
+                right: 0;
                 background: #fff;
                 flex-direction: column;
                 gap: 0;
                 box-shadow: 0 8px 24px rgba(44,62,80,0.08);
-            display: none;
+                display: none;
             }
             .navbar-menu.open {
-            display: flex;
+                display: flex;
             }
             .navbar-menu li {
                 border-bottom: 1px solid #f0f0f0;
@@ -174,7 +229,16 @@
                 padding: 16px 24px;
                 display: block;
             }
+            .navbar-actions {
+                margin-left: auto;
+                margin-right: 15px;
+            }
+            .nav-btn {
+                padding: 7px 15px;
+                font-size: 0.85rem;
+            }
         }
+        
         /* Hero Modernization */
         #home {
             background: linear-gradient(120deg, #4caf50 0%, #2196f3 100%);
@@ -427,7 +491,7 @@
             padding: 16px 8px;
         }
         .feature-preview {
-            flex: 1 1 320px;
+            flex: 极1 1 320px;
             min-width: 320px;
             padding: 48px 32px;
             display: flex;
@@ -452,7 +516,7 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
-        #industries .industry-content {
+        #indust极ries .industry-content {
             background: rgba(255,255,255,0.08);
             border-radius: 15px;
             padding: 40px 32px;
@@ -557,7 +621,7 @@
         .contact-form button {
             margin-top: 8px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 8极;
             font-size: 1.1rem;
         }
         .contact-form button.primary-btn {
@@ -1080,9 +1144,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="navbar-actions" id="navbarActions">
-                <button class="primary-btn" id="openLoginModal" style="margin-right: 10px;">Login</button>
-                <button class="primary-btn" id="openSignupModal">Sign Up</button>
-                <button class="primary-btn" id="logoutBtnNav" style="display:none; margin-left: 10px;">Logout</button>
+                <button class="nav-btn login-btn" id="openLoginModal">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="nav-btn signup-btn" id="openSignupModal">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+                <button class="nav-btn logout-btn" id="logoutBtnNav" style="display:none;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
     </nav>
@@ -1132,7 +1202,7 @@
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-money-bill-wave"></i>
+                        <i class="fas fa-money-bill-wave"></极>
                     </div>
                     <h3>Expenses</h3>
                     <p>Track and manage business expenses</p>
@@ -1226,7 +1296,7 @@
     </section>
 
     <!-- Industries Section -->
-    <section id="industries">
+        <section id="industries">
         <div class="container">
             <div class="section-title">
                 <h2>Built for Your Industry</h2>
@@ -1234,10 +1304,18 @@
             </div>
             
             <div class="industry-filters">
-                <button class="primary-btn industry-filter active" data-industry="pharmacy">Pharmacy Store</button>
-                <button class="primary-btn industry-filter" data-industry="grocery">Grocery Store</button>
-                <button class="primary-btn industry-filter" data-industry="restaurant">Restaurant</button>
-                <button class="primary-btn industry-filter" data-industry="mobile">Mobile Shop</button>
+                <button class="primary-btn industry-filter active" data-industry="pharmacy">
+                    <i class="fas fa-prescription-bottle-alt"></i> Pharmacy Store
+                </button>
+                <button class="primary-btn industry-filter" data-industry="grocery">
+                    <i class="fas fa-shopping-basket"></i> Grocery Store
+                </button>
+                <button class="primary-btn industry-filter" data-industry="restaurant">
+                    <i class="fas fa-utensils"></i> Restaurant
+                </button>
+                <button class="primary-btn industry-filter" data-industry="mobile">
+                    <i class="fas fa-mobile-alt"></i> Mobile Shop
+                </button>
             </div>
             
             <div class="industry-content active" data-industry="pharmacy">
@@ -1294,7 +1372,7 @@
             <div class="industry-content" data-industry="mobile">
                 <div class="industry-row">
                     <div class="industry-info">
-                        <h3>Mobile Shop Billing Software</h极
+                        <h3>Mobile Shop Billing Software</h3>
                         <p>PaperBill Mobile Shop Billing Software is tailored for electronics retailers specializing in mobile phones and accessories. It helps manage IMEI numbers, track accessories inventory, and handle warranty claims efficiently.</p>
                         <p>With specialized features for the mobile industry, it helps retailers manage complex inventory and provide excellent customer service.</p>
                         <button class="primary-btn">Learn More About Mobile Solution</button>
@@ -1321,7 +1399,7 @@
     <section id="pricing">
         <div class="container">
             <div class="section-title">
-                <极2>Retail Shop Pricing Plans</h2>
+                <h2>Retail Shop Pricing Plans</h2>
                 <p>Affordable plans for businesses of all sizes</p>
             </div>
             
@@ -1383,7 +1461,7 @@
                         <div class="price-annual">
                             <div class="price">¥440</div>
                             <div class="price-period">per month, billed annually</div>
-                        </极>
+                        </div>
                     </div>
                     <ul class="features-list">
                         <li>
@@ -1496,7 +1574,7 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#industries">Industries</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact">Contact</a></极>
                 </ul>
             </div>
             
@@ -1701,6 +1779,5 @@
     </div>
 
     <script src="script.js"></script>
-  
 </body>
 </html>
