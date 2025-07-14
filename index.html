@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperBill - Retail Shop Billing Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(120deg, #f8fafc 0%, #e3e9f7 100%);
+            color: #23272f;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button, .btn {
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            border: none;
+            outline: none;
+        }
+        button:focus, .btn:focus {
+            outline: 2px solid #4CAF50;
+            outline-offset: 2px;
+        }
+        button:hover, .btn:hover {
+            transform: scale(1.045);
+            box-shadow: 0 6px 24px rgba(44, 62, 80, 0.12);
+            filter: brightness(1.03);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        section {
+            padding: 96px 0 80px 0;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #23272f;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .section-title p {
+            font-size: 1.15rem;
+            color: #5a6270;
+        }
+        /* Navbar Modernization */
+        .main-navbar {
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 64px;
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -1px;
+        }
+        .navbar-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-menu li a {
+            color: #23272f;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .navbar-menu li a:after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: #4CAF50;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+        }
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: #4CAF50;
+        }
+        .navbar-menu li a:hover:after,
+        .navbar-menu li a.active:after {
+            width: 100%;
+        }
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: #23272f;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .navbar-menu {
+                gap: 18px;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar-toggle {
+                display: block;
+            }
+            .navbar-menu {
+            position: absolute;
+                top: 64px;
+                left: 0;
+            right: 0;
+                background: #fff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 8px 24px rgba(44,62,80,0.08);
+            display: none;
+            }
+            .navbar-menu.open {
+            display: flex;
+            }
+            .navbar-menu li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .navbar-menu li:last-child {
+                border-bottom: none;
+            }
+            .navbar-menu li a {
+                padding: 16px 24px;
+                display: block;
+            }
+        }
+        /* Hero Modernization */
+        #home {
+            background: linear-gradient(120deg, #4caf50 0%, #2196f3 100%);
+            color: #fff;
+            text-align: center;
+            padding: 140px 0 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #home:before {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; top: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+        .hero-content p {
+            font-size: 1.35rem;
+            margin-bottom: 48px;
+            line-height: 1.7;
+            color: #e3f2fd;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .primary-btn {
+            background: linear-gradient(90deg, #4caf50 0%, #2196f3 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+        }
+        .primary-btn:hover {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+        }
+        .outline-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .outline-btn:hover {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border-color: #e3f2fd;
+        }
+        /* Section backgrounds */
+        #features, #pricing {
+            background: #f6f8fb;
+        }
+        #industries {
+            background: linear-gradient(120deg, #23272f 0%, #4a6491 100%);
+            color: #fff;
+        }
+        #contact {
+            background: linear-gradient(120deg, #4a6491 0%, #23272f 100%);
+            color: #fff;
+        }
+        /* Card Modernization */
+        .feature-card, .pricing-card, .preview-card, .stat-card {
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(44,62,80,0.08);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .feature-card:hover, .pricing-card:hover, .preview-card:hover, .stat-card:hover {
+            box-shadow: 0 12px 48px rgba(33,150,243,0.13);
+            transform: translateY(-6px) scale(1.025);
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #2196f3;
+        }
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            color: #4CAF50;
+        }
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #ffecb3 0%, #e3f2fd 100%);
+            color: #FF9800;
+        }
+        .feature-card:nth-child(4) .feature-icon {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e3f2fd 100%);
+            color: #9C27B0;
+        }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        /* Responsive Section Padding */
+        @media (max-width: 992px) {
+            section {
+                padding: 64px 0 48px 0;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 0 10px;
+            }
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .primary-btn, .outline-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 0;
+            }
+        }
+        /* --- Section Layout & Alignment Improvements --- */
+        section {
+            padding: 96px 0 80px 0;
+            position: relative;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Hero Section Alignment */
+        #home .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        /* Features Section Alignment */
+        #features .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            justify-items: center;
+            margin-bottom: 48px;
+        }
+        .feature-card {
+            width: 100%;
+            max-width: 260px;
+            min-width: 200px;
+            text-align: center;
+            padding: 32px 20px;
+        }
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .feature-tag {
+            padding: 12px 22px;
+            font-size: 1rem;
+        }
+        .feature-highlight {
+            margin-top: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            align-items: stretch;
+            min-height: 320px;
+        }
+        .feature-row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .feature-content {
+            flex: 1 1 320px;
+            min-width: 320px;
+            padding: 48px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #f0f7ff;
+        }
+        .feature-cols {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 24px;
+            justify-content: flex-start;
+        }
+        .feature-col {
+            flex: 1 1 120px;
+            min-width: 120px;
+            max-width: 160px;
+            text-align: center;
+            padding: 16px 8px;
+        }
+        .feature-preview {
+            flex: 1 1 320px;
+            min-width: 320px;
+            padding: 48px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            width: 100%;
+            max-width: 340px;
+        }
+        /* Industries Section Alignment */
+        #industries .industry-filters {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        #industries .industry-content {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 40px 32px;
+            max-width: 900px;
+            margin: 0 auto 32px auto;
+            display: none;
+        }
+        #industries .industry-content.active {
+            display: block;
+        }
+        .industry-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+            justify-content: center;
+        }
+        .industry-info {
+            flex: 1 1 320px;
+            min-width: 260px;
+            max-width: 420px;
+        }
+        .industry-icon {
+            flex: 1 1 220px;
+            min-width: 180px;
+            text-align: center;
+        }
+        .icon-container {
+            margin: 0 auto;
+        }
+        /* Pricing Section Alignment */
+        #pricing .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .pricing-card {
+            min-width: 260px;
+            max-width: 340px;
+            flex: 1 1 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            margin-bottom: 0;
+        }
+        .features-list {
+            margin-bottom: 32px;
+        }
+        /* Contact Section Alignment */
+        #contact .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #contact .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .contact-form, .contact-info {
+            flex: 1 1 380px;
+            min-width: 320px;
+            max-width: 420px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+            padding: 32px 28px 28px 28px;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            height: 100%;
+        }
+        .contact-form h3 {
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            color: #23272f;
+        }
+        .contact-form input, .contact-form textarea {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #4caf50;
+            background: #fff;
+        }
+        .contact-form button {
+            margin-top: 8px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        .contact-form button.primary-btn {
+            width: auto;
+            min-width: 140px;
+            align-self: center;
+            margin-top: 31.5px;
+            padding: 12px 32px;
+            font-size: 1rem;
+        }
+        .contact-info h3 {
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            color: #23272f;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .contact-item i {
+            font-size: 1.3rem;
+            color: #4caf50;
+            margin-top: 2px;
+        }
+        .contact-item-content h4 {
+            margin: 0 0 2px 0;
+            font-size: 1.05rem;
+            color: #23272f;
+        }
+        .contact-item-content p {
+            margin: 0;
+            color: #5a6270;
+            font-size: 0.98rem;
+        }
+        /* Footer Alignment */
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: center;
+        }
+        .footer-col {
+            min-width: 220px;
+            max-width: 320px;
+            flex: 1 1 220px;
+            margin-bottom: 24px;
+        }
+        .footer-logo {
+            margin-bottom: 18px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-about {
+            margin-bottom: 18px;
+        }
+        .footer-links, .footer-links-bottom {
+            padding-left: 0;
+        }
+        .footer-links {
+            margin-bottom: 0;
+        }
+        .newsletter-form {
+            margin-top: 12px;
+        }
+        /* Responsive Fixes */
+        @media (max-width: 900px) {
+            #features .feature-cards, #pricing .pricing-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-container {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+            .footer-col {
+                max-width: 100%;
+            text-align: center;
+            }
+        }
+        @media (max-width: 700px) {
+            #features .feature-cards, #pricing .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            .feature-row, .industry-row, #contact .contact-row {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .feature-content, .feature-preview, .industry-info, .industry-icon, .contact-form, .contact-info {
+                min-width: 0;
+                max-width: 100%;
+                padding: 24px 8px;
+            }
+            .footer-container {
+                padding: 0 10px;
+            }
+            .footer-links-bottom {
+            display: flex;
+                gap: 24px;
+                justify-content: center;
+            margin-bottom: 8px;
+            }
+        }
+        /* --- Profile Sidebar Modernization --- */
+        .profile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -4px 0 32px rgba(44,62,80,0.13);
+            z-index: 3000;
+            transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+            overflow-y: auto;
+            border-radius: 16px 0 0 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-sidebar.open {
+            right: 0;
+        }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 28px 18px 28px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .sidebar-header h3 {
+            font-size: 1.3rem;
+            color: #23272f;
+        }
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: #23272f;
+            cursor: pointer;
+        }
+        .sidebar-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .profile-section {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px 18px 18px 18px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.04);
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .profile-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4caf50 0%, #2196f3 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .profile-details h3 {
+            margin: 0 0 2px 0;
+            font-size: 1.1rem;
+            color: #23272f;
+        }
+        .profile-details p {
+            margin: 0;
+            color: #5a6270;
+            font-size: 0.98rem;
+        }
+        .profile-stats {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+        }
+        .profile-stats .stat-card {
+            flex: 1 1 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+            padding: 12px 10px;
+            text-align: center;
+        }
+        .profile-section h4 {
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+            color: #23272f;
+        }
+        #profileForm .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        #profileForm .form-group {
+            flex: 1 1 0;
+            margin-bottom: 10px;
+        }
+        #profileForm input {
+            width: 100%;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+        #profileForm input:focus {
+            border-color: #4caf50;
+            background: #fff;
+        }
+        .update-btn {
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            margin-top: 8px;
+        }
+        /* Subscription Section */
+        .profile-section .stat-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+            padding: 16px 14px;
+            margin-top: 10px;
+        }
+        .profile-section .stat-number {
+            font-size: 1.08rem;
+            font-weight: bold;
+            color: #23272f;
+        }
+        .profile-section .stat-label {
+            font-size: 0.98rem;
+            color: #5a6270;
+            margin-top: 2px;
+        }
+        .user-btn {
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 700px) {
+            .profile-sidebar {
+                width: 100vw;
+                right: -100vw;
+                border-radius: 0;
+            }
+            .profile-sidebar.open {
+                right: 0;
+            }
+        }
+        /* Rating Popup */
+        #ratingPopup {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+            padding: 32px 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        #submitRating {
+            margin-top: 18px;
+            width: auto;
+            min-width: 140px;
+            align-self: center;
+            padding: 12px 32px;
+            font-size: 1rem;
+        }
+        #submitRating.primary-btn {
+            /* ensure it gets the primary style */
+        }
+    </style>
+</head>
+<body>
+    <!-- Responsive Menu Bar -->
+    <nav class="main-navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <i class="fas fa-cash-register"></i> PaperBill
+            </div>
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="navbar-actions" id="navbarActions">
+                <button class="primary-btn" id="openLoginModal" style="margin-right: 10px;">Login</button>
+                <button class="primary-btn" id="openSignupModal">Sign Up</button>
+                <button class="primary-btn" id="logoutBtnNav" style="display:none; margin-left: 10px;">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <style>
+        .main-navbar {
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 64px;
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -1px;
+        }
+        .navbar-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-menu li a {
+            color: #23272f;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .navbar-menu li a:after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: #4CAF50;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+        }
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: #4CAF50;
+        }
+        .navbar-menu li a:hover:after,
+        .navbar-menu li a.active:after {
+            width: 100%;
+        }
+        .navbar-toggle {
+                display: none;
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: #23272f;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .navbar-menu {
+                gap: 18px;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar-toggle {
+                display: block;
+            }
+            .navbar-menu {
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 8px 24px rgba(44,62,80,0.08);
+                display: none;
+            }
+            .navbar-menu.open {
+                display: flex;
+            }
+            .navbar-menu li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .navbar-menu li:last-child {
+                border-bottom: none;
+            }
+            .navbar-menu li a {
+                padding: 16px 24px;
+                display: block;
+            }
+        }
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        @media (max-width: 700px) {
+            .navbar-actions {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        // Responsive menu toggle
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+        navbarToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('open');
+        });
+        // Close menu on link click (mobile)
+        navbarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 700) {
+                    navbarMenu.classList.remove('open');
+                }
+            });
+        });
+        // Highlight active link on scroll
+        const sections = ['home','features','industries','pricing','contact'];
+        window.addEventListener('scroll', function() {
+            let scrollPos = window.scrollY + 80;
+            let found = false;
+            for (let id of sections) {
+                let el = document.getElementById(id);
+                if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+                    navbarMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                    let activeLink = navbarMenu.querySelector(`a[href="#${id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                navbarMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+            }
+        });
+
+        // Show/hide navbar actions based on login state
+        function updateNavbarAuthUI() {
+            const loginBtn = document.getElementById('openLoginModal');
+            const signupBtn = document.getElementById('openSignupModal');
+            const logoutBtn = document.getElementById('logoutBtnNav');
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                signupBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+            }
+        }
+        updateNavbarAuthUI();
+        window.addEventListener('storage', updateNavbarAuthUI);
+    </script>
+
+   
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Retail Shop Billing Software</h1>
+                <p>Create professional bills in seconds, track income & expenses easily, and stay organized! Download PaperBill Now & Experience Faster Billing on PC and Mobile with a Free Trial!</p>
+                <div class="hero-btns">
+                    <button class="primary-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </button>
+                    <button class="outline-btn">
+                        <i class="fas fa-play-circle"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Features of Billing Software</h2>
+                <p>Comprehensive tools to manage every aspect of your retail business</p>
+            </div>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Purchase</h3>
+                    <p>Manage vendor purchases and inventory efficiently</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Quick Billing</h3>
+                    <p>Create professional invoices in seconds</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Expenses</h3>
+                    <p>Track and manage business expenses</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Cash & Bank</h3>
+                    <p>Manage cash flow and bank transactions</p>
+                </div>
+            </div>
+            
+            <!-- Additional Features -->
+            <div class="feature-tags">
+                <div class="feature-tag">
+                    <i class="fas fa-barcode"></i>
+                    <span>Barcode Management</span>
+                </div>
+                <div class="feature-tag">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Sync & Share</span>
+                </div>
+                <div class="feature-tag">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Backup/Restore</span>
+                </div>
+                <div class="feature-tag">
+                    <i class="fas fa-tools"></i>
+                    <span>Utilities</span>
+                </div>
+            </div>
+            
+            <!-- Advanced Features -->
+            <div class="feature-highlight">
+                <div class="feature-row">
+                    <div class="feature-content">
+                        <h2>Advanced Barcode Management</h2>
+                        <p>The Barcode Management feature offered by PaperBill simplifies retail operations by allowing for fast and precise product scanning at the time of billing. Retailers can easily create, print, and scan barcodes with this tool, minimizing errors from manual entries and accelerating the checkout process.</p>
+                        
+                        <div class="feature-cols">
+                            <div class="feature-col">
+                                <i class="fas fa-qrcode"></i>
+                                <div>Generate Barcode</div>
+                            </div>
+                            <div class="feature-col">
+                                <i class="fas fa-file-import"></i>
+                                <div>Import Items</div>
+                            </div>
+                            <div class="feature-col">
+                                <i class="fas fa-sync"></i>
+                                <div>Bulk Update</div>
+                            </div>
+                        </div>
+                        
+                        <button class="primary-btn">
+                            <i class="fas fa-play"></i> Watch Barcode Demo
+                        </button>
+                    </div>
+                    
+                    <div class="feature-preview">
+                        <div class="preview-container">
+                            <div class="preview-card">
+                                <div class="preview-header">
+                                    <div>
+                                        <div>H982387</div>
+                                        <div style="font-size: 18px; font-weight: bold;">Chips</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 14px; color: #666;">10 pcs</div>
+                                        <div style="font-weight: bold;">$10/box</div>
+                                    </div>
+                                </div>
+                                <div class="preview-barcode">
+                                    <i class="fas fa-barcode" style="font-size: 40px; color: #333;"></i>
+                                </div>
+                                <div class="preview-footer">
+                                    <div>Total</div>
+                                    <div>$100.00</div>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-plus" style="margin-right: 10px;"></i> Add Barcode Item
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries">
+        <div class="container">
+            <div class="section-title">
+                <h2>Built for Your Industry</h2>
+                <p>Tailored solutions for various retail sectors</p>
+            </div>
+            
+            <div class="industry-filters">
+                <button class="primary-btn industry-filter active" data-industry="pharmacy">Pharmacy Store</button>
+                <button class="primary-btn industry-filter" data-industry="grocery">Grocery Store</button>
+                <button class="primary-btn industry-filter" data-industry="restaurant">Restaurant</button>
+                <button class="primary-btn industry-filter" data-industry="mobile">Mobile Shop</button>
+            </div>
+            
+            <div class="industry-content active" data-industry="pharmacy">
+                <div class="industry-row">
+                    <div class="industry-info">
+                        <h3>Pharmacy Store Billing Software</h3>
+                        <p>PaperBill App Pharmacy Store Billing Software is tailored to meet the specific needs of pharmacies with efficiency, accuracy, and effectiveness. It streamlines billing processes, manages inventory, and ensures precise invoicing, reducing errors and enhancing operational productivity.</p>
+                        <p>With user-friendly features, it supports better financial management, customer satisfaction, and compliance with industry regulations.</p>
+                        <button class="primary-btn">Learn More About Pharmacy Solution</button>
+                    </div>
+                    <div class="industry-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-prescription-bottle-alt"></i>
+                            <div>Pharmacy Store</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="industry-content" data-industry="grocery">
+                <div class="industry-row">
+                    <div class="industry-info">
+                        <h3>Grocery Store Billing Software</h3>
+                        <p>PaperBill Grocery Store Billing Software is designed to handle high-volume transactions with speed and accuracy. It helps grocery stores manage perishable inventory, track expiration dates, and optimize stock levels to reduce waste and maximize profits.</p>
+                        <p>With features like loyalty programs and customer management, it enhances the shopping experience while streamlining operations.</p>
+                        <button class="primary-btn">Learn More About Grocery Solution</button>
+                    </div>
+                    <div class="industry-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-shopping-basket"></i>
+                            <div>Grocery Store</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="industry-content" data-industry="restaurant">
+                <div class="industry-row">
+                    <div class="industry-info">
+                        <h3>Restaurant Billing Software</h3>
+                        <p>PaperBill Restaurant Billing Software simplifies restaurant operations from order taking to billing. It enables table management, kitchen order tracking, and split billing, making it perfect for busy restaurants, cafes, and food courts.</p>
+                        <p>With integrated inventory management, it helps control food costs and reduce wastage while providing valuable insights into your most popular dishes.</p>
+                        <button class="primary-btn">Learn More About Restaurant Solution</button>
+                    </div>
+                    <div class="industry-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-utensils"></i>
+                            <div>Restaurant</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="industry-content" data-industry="mobile">
+                <div class="industry-row">
+                    <div class="industry-info">
+                        <h3>Mobile Shop Billing Software</h3>
+                        <p>PaperBill Mobile Shop Billing Software is tailored for electronics retailers specializing in mobile phones and accessories. It helps manage IMEI numbers, track accessories inventory, and handle warranty claims efficiently.</p>
+                        <p>With specialized features for the mobile industry, it helps retailers manage complex inventory and provide excellent customer service.</p>
+                        <button class="primary-btn">Learn More About Mobile Solution</button>
+                    </div>
+                    <div class="industry-icon">
+                        <div class="icon-container">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>Mobile Shop</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="primary-btn">
+                <i class="fas fa-download"></i> Download for Your Industry
+            </button>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Retail Shop Pricing Plans</h2>
+                <p>Affordable plans for businesses of all sizes</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <div class="toggle-container">
+                    <span class="toggle-label">Monthly</span>
+                    <input type="checkbox" id="pricingToggle">
+                    <div class="toggle-switch"></div>
+                    <span class="toggle-label toggle-save">Annual (Save 20%)</span>
+                </div>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    
+                    <h3>Standard</h3>
+                    <div class="price-container">
+                        <div class="price-monthly">
+                            <div class="price">¥350</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="price-annual">
+                            <div class="price">¥283</div>
+                            <div class="price-period">per month, billed annually</div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Quick Billing
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Inventory Management
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Barcode Support
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Basic Reports
+                        </li>
+                        <li class="disabled">
+                            <i class="fas fa-times-circle"></i>
+                            Advanced Analytics
+                        </li>
+                    </ul>
+                    <button class="primary-btn">Get Started</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Professional</h3>
+                    <div class="price-container">
+                        <div class="price-monthly">
+                            <div class="price">¥550</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="price-annual">
+                            <div class="price">¥440</div>
+                            <div class="price-period">per month, billed annually</div>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            All Standard Features
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Multiple Payment Options
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            GST Compliance
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Advanced Reports
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Advanced Analytics
+                        </li>
+                    </ul>
+                    <button class="primary-btn">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions? Get in touch with our support team</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-row">
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name">
+                            <input type="email" placeholder="Your Email">
+                            <input type="text" placeholder="Subject">
+                            <textarea placeholder="Your Message"></textarea>
+                            <button type="submit" class="primary-btn">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-content">
+                                <h4>Address</h4>
+                                <p>Bengaluru, Karnataka, 560102</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <p>+91-6666-444-700</p>
+                                <p>+91-9999-444-700</p>
+
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p>support@PaperBill.in</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-content">
+                                <h4>Working Hours</h4>
+                                <p>09:00 AM - 09:00 PM (All Days)</p>
+                            </div>
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="fas fa-cash-register"></i>
+                    PaperBill
+                </div>
+                <p class="footer-about">Professional billing software for retail shops, designed to simplify your business operations and boost growth.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Video Tutorials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+            </div>
+        </div>
+        
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to Your Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password">
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button class="modal-btn" id="loginSubmit">Login</button>
+            </div>
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create an Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" class="form-control" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" class="form-control" placeholder="Enter last name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" class="form-control" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="agreeTerms">
+                    <label for="agreeTerms">I agree to the Terms & Conditions and Privacy Policy</label>
+                </div>
+                <button class="modal-btn" id="signupSubmit">Create Account</button>
+            </div>
+            <div class="modal-footer">
+                <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Sidebar -->
+    <div class="profile-sidebar" id="profileSidebar">
+        <div class="sidebar-header">
+            <h3>My Profile</h3>
+            <button class="close-sidebar">&times;</button>
+        </div>
+        <div class="sidebar-body">
+            <div class="profile-section">
+                <h4>Personal Information</h4>
+                <div class="profile-info">
+                    <div class="profile-avatar" id="sidebarInitials">JD</div>
+                    <div class="profile-details">
+                        <h3 id="sidebarName">John Doe</h3>
+                        <p id="sidebarEmail">john.doe@example.com</p>
+                        <p id="sidebarPlan">Premium Member</p>
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">125</div>
+                        <div class="stat-label">Invoices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">87</div>
+                        <div class="stat-label">Products</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h4>Account Settings</h4>
+                <form id="profileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="profileFirstName" class="form-control" value="John">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="profileLastName" class="form-control" value="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="profileEmail" class="form-control" value="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="profilePhone" class="form-control" value="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Business Name</label>
+                        <input type="text" id="profileBusiness" class="form-control" value="Doe's Retail Store">
+                    </div>
+                    <button class="update-btn" type="button" id="updateProfile">Update Profile</button>
+                </form>
+            </div>
+            
+            <div class="profile-section">
+                <h4>Subscription</h4>
+                <div class="stat-card" style="text-align: left;">
+                    <div class="stat-number" id="subscriptionPlan">Professional Plan</div>
+                    <div class="stat-label">Renews on: <span id="renewalDate">15 Oct 2025</span></div>
+                    <div class="stat-label">Next Payment: <span id="nextPayment">$44.00</span></div>
+                    <button class="user-btn" style="margin-top: 15px; width: 100%;">Manage Subscription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Popup -->
+    <div id="ratingPopup">
+        <div class="rating-header">
+            <h3>How useful was this page?</h3>
+            <button id="closeRating">&times;</button>
+        </div>
+        <div class="rating-stars">
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <div class="rating-info">
+            Average rating 4.45 / 5. Vote count: 1544
+        </div>
+        <button class="primary-btn rating-btn" id="submitRating">Submit Rating</button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
