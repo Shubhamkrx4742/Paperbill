@@ -1,13 +1,10 @@
-// Login page specific functionality
-
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
     const showPasswordBtn = document.getElementById('showLoginPassword');
     
-    // Password toggle functionality
+    // Password toggle
     if (showPasswordBtn && passwordInput) {
         showPasswordBtn.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -27,47 +24,33 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = emailInput.value.trim();
+            const email = emailInput.value.trim().toLowerCase();
             const password = passwordInput.value.trim();
-            const rememberMe = document.getElementById('rememberMe') ? document.getElementById('rememberMe').checked : false;
+            const rememberMe = document.getElementById('rememberMe').checked;
             
             // Reset errors
-            const emailError = document.getElementById('emailError');
-            const passwordError = document.getElementById('passwordError');
-            
-            if (emailError) emailError.style.display = 'none';
-            if (passwordError) passwordError.style.display = 'none';
+            document.querySelectorAll('.error').forEach(el => {
+                el.style.display = 'none';
+            });
             
             let isValid = true;
             
             // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email) {
-                if (emailError) {
-                    emailError.textContent = 'Email is required';
-                    emailError.style.display = 'block';
-                }
+                showFieldError('emailError', 'Email is required');
                 isValid = false;
             } else if (!emailRegex.test(email)) {
-                if (emailError) {
-                    emailError.textContent = 'Please enter a valid email address';
-                    emailError.style.display = 'block';
-                }
+                showFieldError('emailError', 'Please enter a valid email');
                 isValid = false;
             }
             
             // Validate password
             if (!password) {
-                if (passwordError) {
-                    passwordError.textContent = 'Password is required';
-                    passwordError.style.display = 'block';
-                }
+                showFieldError('passwordError', 'Password is required');
                 isValid = false;
-            } else if (password.length < 6) {
-                if (passwordError) {
-                    passwordError.textContent = 'Password must be at least 6 characters';
-                    passwordError.style.display = 'block';
-                }
+            } else if (password.length < 8) {
+                showFieldError('passwordError', 'Password must be at least 8 characters');
                 isValid = false;
             }
             
@@ -75,13 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Get users from localStorage
             const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email.toLowerCase() === email);
             
-            // Find user by email
-            const user = users.find(u => u.email === email);
-            
-            // Check if user exists and password matches
             if (!user) {
-                showToast('User not found. Please sign up first.', true);
+                showToast('User not found. Please sign up', true);
                 return;
             }
             
@@ -113,15 +93,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail && emailInput) {
         emailInput.value = rememberedEmail;
-        const rememberMe = document.getElementById('rememberMe');
-        if (rememberMe) rememberMe.checked = true;
+        document.getElementById('rememberMe').checked = true;
     }
     
-    // Close modal functionality (if exists)
+    // Close modal functionality
     const closeLoginModal = document.getElementById('closeLoginModal');
     if (closeLoginModal) {
         closeLoginModal.addEventListener('click', () => {
             window.location.href = 'index.html';
         });
+    }
+
+    // Helper function for error display
+    function showFieldError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
     }
 });

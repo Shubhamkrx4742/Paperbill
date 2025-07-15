@@ -16,49 +16,50 @@
         <span id="toastMessage"></span>
     </div>
 
-    <!-- Demo Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-container">
-            <button class="close-video" id="closeVideo">&times;</button>
-            <video id="demoVideo" controls>
-                <source src="#" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+    <!-- Responsive Menu Bar -->
+    <!-- Responsive Menu Bar -->
+<nav class="main-navbar">
+    <div class="navbar-container">
+        <!-- Hamburger menu moved before logo -->
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Logo -->
+        <a href="index.html" class="navbar-logo">
+            <i class="fas fa-cash-register"></i> PaperBill
+        </a>
+        
+        <!-- Navigation Menu -->
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <!-- Action Buttons -->
+        <div class="navbar-actions" id="navbarActions">
+            <a href="login.html" class="nav-btn login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            <a href="signup.html" class="nav-btn signup-btn">
+                <i class="fas fa-user-plus"></i> Sign Up
+            </a>
+            <button class="nav-btn logout-btn" id="logoutBtnNav" style="display:none;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
         </div>
     </div>
-
-    <!-- Responsive Menu Bar -->
-    <nav class="main-navbar">
-        <div class="navbar-container">
-            <div class="navbar-logo">
-                <i class="fas fa-cash-register"></i> PaperBill
-            </div>
-            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#industries">Industries</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="navbar-actions" id="navbarActions">
-                <a href="login.html" class="nav-btn login-btn">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
-                <a href="signup.html" class="nav-btn signup-btn">
-                    <i class="fas fa-user-plus"></i> Sign Up
-                </a>
-                <button class="nav-btn logout-btn" id="logoutBtnNav" style="display:none;">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </div>
-        </div>
-    </nav>
+</nav>
 
     <!-- Hero Section -->
-    <section id="home">
+    <section id="home" >
+        <div class="Maintitle">
+            <h1 id="heroTitle" >Welcome To  Retail Shop Billing Software</h1>
+                    <img src="/assets/back1.jpg" alt="Billing background" style="max-width: 100%; height: auto; border-radius: 8px;">
+                </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Retail Shop Billing Software</h1>
@@ -71,6 +72,7 @@
                         <i class="fas fa-play-circle"></i> Watch Demo
                     </button>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -138,63 +140,55 @@
             </div>
             
             <!-- Advanced Features -->
-            <div class="feature-highlight">
-                <div class="feature-row">
-                    <div class="feature-content">
-                        <h2>Advanced Barcode Management</h2>
-                        <p>The Barcode Management feature offered by PaperBill simplifies retail operations by allowing for fast and precise product scanning at the time of billing. Retailers can easily create, print, and scan barcodes with this tool, minimizing errors from manual entries and accelerating the checkout process.</p>
-                        
-                        <div class="feature-cols">
-                            <div class="feature-col">
-                                <i class="fas fa-qrcode"></i>
-                                <div>Generate Barcode</div>
-                            </div>
-                            <div class="feature-col">
-                                <i class="fas fa-file-import"></i>
-                                <div>Import Items</div>
-                            </div>
-                            <div class="feature-col">
-                                <i class="fas fa-sync"></i>
-                                <div>Bulk Update</div>
-                            </div>
-                        </div>
-                        
-                        <button class="primary-btn" id="watchBarcodeDemoBtn">
-                            <i class="fas fa-play"></i> Watch Barcode Demo
-                        </button>
-                    </div>
+            
                     
-                    <div class="feature-preview">
-                        <div class="preview-container">
-                            <div class="preview-card">
-                                <div class="preview-header">
-                                    <div>
-                                        <div>H982387</div>
-                                        <div style="font-size: 18px; font-weight: bold;">Chips</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 14px; color: #666;">10 pcs</div>
-                                        <div style="font-weight: bold;">$10/box</div>
-                                    </div>
-                                </div>
-                                <div class="preview-barcode">
-                                    <i class="fas fa-barcode" style="font-size: 40px; color: #333;"></i>
-                                </div>
-                                <div class="preview-footer">
-                                    <div>Total</div>
-                                    <div>$100.00</div>
-                                </div>
-                            </div>
-                            <button class="primary-btn" id="addBarcodeItemBtn" style="display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-plus" style="margin-right: 10px;"></i> Add Barcode Item
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                  
             </div>
         </div>
     </section>
-
+<!-- Image Gallery Section -->
+<section class="image-gallery-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>See PaperBill in Action</h2>
+            <p>Explore how our software transforms retail operations</p>
+        </div>
+        
+        <div class="image-gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Billing Interface">
+                <div class="gallery-caption">
+                    <h4>Intuitive Billing</h4>
+                    <p>Create invoices in seconds with our clean interface</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Inventory Management">
+                <div class="gallery-caption">
+                    <h4>Inventory Tracking</h4>
+                    <p>Real-time stock updates and alerts</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Reports Dashboard">
+                <div class="gallery-caption">
+                    <h4>Advanced Analytics</h4>
+                    <p>Make data-driven decisions with our reports</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mobile App">
+                <div class="gallery-caption">
+                    <h4>Mobile Friendly</h4>
+                    <p>Access your business data anywhere</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Industries Section -->
     <section id="industries">
         <div class="container">
@@ -213,9 +207,7 @@
                 <button class="primary-btn industry-filter" data-industry="restaurant">
                     <i class="fas fa-utensils"></i> Restaurant
                 </button>
-                <button class="primary-btn industry-filter" data-industry="mobile">
-                    <i class="fas fa-mobile-alt"></i> Mobile Shop
-                </button>
+                
             </div>
             
             <div class="industry-content active" data-industry="pharmacy">
@@ -264,27 +256,9 @@
                         <div class="icon-container">
                             <i class="fas fa-utensils"></i>
                             <div>Restaurant</div>
-                        </极div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="industry-content" data-industry="mobile">
-                <div class="industry-row">
-                    <div class="industry-info">
-                        <h3>Mobile Shop Billing Software</h3>
-                        <p>PaperBill Mobile Shop Billing Software is tailored for electronics retailers specializing in mobile phones and accessories. It helps manage IMEI numbers, track accessories inventory, and handle warranty claims efficiently.</p>
-                        <p>With specialized features for the mobile industry, it helps retailers manage complex inventory and provide excellent customer service.</p>
-                        <button class="primary-btn">Learn More About Mobile Solution</button>
-                    </div>
-                    <div class="industry-icon">
-                        <div class="icon-container">
-                            <i class="fas fa-mobile-alt"></i>
-                            <div>Mobile Shop</div>
                         </div>
                     </div>
-                </div>
-            </div>
+              
             
             <!-- Centered Download Button -->
             <div class="industry-download-container">
@@ -510,67 +484,7 @@
     </footer>
 
     <!-- Profile Sidebar -->
-    <div class="profile-sidebar" id="profileSidebar">
-        <div class="sidebar-header">
-            <h3>My Profile</h3>
-            <button class="close-sidebar" id="closeProfileSidebar">&times;</button>
-        </div>
-        <div class="sidebar-body">
-            <div class="profile-section">
-                <h4>Personal Information</h4>
-                <div class="profile-info">
-                    <div class="profile-avatar" id="sidebarInitials">JD</div>
-                    <div class="profile-details">
-                        <h3 id="sidebarName">John Doe</h3>
-                        <p id="sidebarEmail">john.doe@example.com</p>
-                        <p id="sidebarPlan">Premium Member</p>
-                    </div>
-                </div>
-                
-                <div class="profile-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">125</div>
-                        <div class="stat-label">Invoices</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">42</div>
-                        <div class="stat-label">Customers</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">87</div>
-                        <div class="stat-label">Products</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="profile-section">
-                <h4>Account Settings</h4>
-                <form id="profileForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" id="profileFirstName" class="form-control" value="John" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" id="profileLastName" class="form-control" value="Doe" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="profileEmail" class="form-control" value="john.doe@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="profilePhone" class="form-control" value="+1 (555) 123-4567">
-                    </div>
-                    <div class="form-group">
-                        <label>Business Name</label>
-                        <input type="text" id="profileBusiness" class="form-control" value="Doe's Retail Store">
-                    </div>
-                    <button class="update-btn" type="button" id="updateProfile">Update Profile</button>
-                </form>
-            </div>
+   
             
             <div class="profile-section">
                 <h4>Subscription</h4>

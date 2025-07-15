@@ -82,6 +82,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Intersection Observer for animations
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.feature-card, .industry-row, .pricing-card, .gallery-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("navbarToggle");
+  const menu = document.getElementById("navbarMenu");
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+});
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateOnScroll();
+    
+    // Pulse animation for CTA buttons
+    const ctaButtons = document.querySelectorAll('.primary-btn, .pricing-btn');
+    ctaButtons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.style.animation = 'pulse 1.5s infinite';
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.animation = '';
+        });
+    });
+});
     // Contact Form Submission
     const contactForm = document.getElementById('contactForm');
     if(contactForm) {
