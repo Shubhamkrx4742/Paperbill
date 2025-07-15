@@ -236,10 +236,10 @@
 }
 
 .Maintitle img {
-    border-radius: 12px;
+    /* border-radius: 12px; */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: var(--transition);
+    /* transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition); */
     max-height: 500px;
     width: 1500px;
     margin-right: 100px;
