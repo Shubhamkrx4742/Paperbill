@@ -223,11 +223,12 @@
     overflow: hidden;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    text-align: center;
+    /* text-align: center; */
     padding: 100px 0px;
-    justify-content: center;
+    /* justify-content: center; */
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .Maintitle {
@@ -261,8 +262,8 @@
 
 .hero-content h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #fff, #ddd);
+    margin-bottom: 10px;
+    background: white;
     -webkit-background-clip: text;
     background-clip: text;
     justify-content: center;
@@ -278,7 +279,24 @@
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.2s forwards;
     opacity: 0;
+    width: 100%;
 }
+
+.hero-content p1 {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.2s forwards;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
 
 .hero-btns {
     display: flex;
