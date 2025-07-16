@@ -116,7 +116,7 @@
     font-size: 0.95rem;
 }
 
-.login-btn {
+/* .login-btn {
     background: transparent;
     color: var(--dark-color);
     border: 1px solid #ddd;
@@ -143,7 +143,7 @@
     color: white;
     border: none;
     cursor: pointer;
-}
+} */
 
 /* Responsive styles */
 @media (max-width: 992px) {
@@ -289,13 +289,6 @@
     animation: fadeInUp 1s ease 0.2s forwards;
     opacity: 0;
 }
-
-
-
-
-
-
-
 
 
 .hero-btns {
@@ -1041,4 +1034,109 @@ footer {
 .rating-btn {
     display: block;
     margin: 0 auto;
+}
+
+/* Add to existing CSS */
+.advanced-features {
+    margin-top: 60px;
+    animation: fadeIn 1s ease;
+}
+
+.feature-highlights {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    transform: translateY(0);
+    opacity: 0;
+    animation: slideUp 0.8s ease forwards;
+}
+
+.highlight-card:nth-child(1) { animation-delay: 0.1s; }
+.highlight-card:nth-child(2) { animation-delay: 0.3s; }
+.highlight-card:nth-child(3) { animation-delay: 0.5s; }
+
+.highlight-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+    border-radius: 50%;
+    font-size: 32px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.highlight-card:hover .highlight-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 20px rgba(106, 17, 203, 0.4);
+}
+
+.highlight-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.highlight-card p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Add pulse animation to feature icons on hover */
+.feature-card:hover .feature-icon {
+    animation: pulse 1s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feature-highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .highlight-card {
+        width: 100%;
+        max-width: 350px;
+    }
 }

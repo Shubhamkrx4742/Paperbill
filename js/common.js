@@ -16,22 +16,22 @@ function showToast(message, isError = false) {
 
 // Initialize the application
 function initApp() {
-    const savedUser = localStorage.getItem('currentUser');
-    const logoutBtn = document.getElementById('logoutBtnNav');
-    const loginBtn = document.querySelector('.login-btn');
-    const signupBtn = document.querySelector('.signup-btn');
+    // const savedUser = localStorage.getItem('currentUser');
+    // const logoutBtn = document.getElementById('logoutBtnNav');
+    // const loginBtn = document.querySelector('.login-btn');
+    // const signupBtn = document.querySelector('.signup-btn');
     
-    if (savedUser && logoutBtn) {
-        const user = JSON.parse(savedUser);
-        logoutBtn.style.display = 'inline-block';
+    // if (savedUser && logoutBtn) {
+    //     const user = JSON.parse(savedUser);
+    //     logoutBtn.style.display = 'inline-block';
         
-        if(loginBtn) loginBtn.style.display = 'none';
-        if(signupBtn) signupBtn.style.display = 'none';
+    //     if(loginBtn) loginBtn.style.display = 'none';
+    //     if(signupBtn) signupBtn.style.display = 'none';
         
-        // Update profile sidebar
-        const sidebarInitials = document.getElementById('sidebarInitials');
-        const sidebarName = document.getElementById('sidebarName');
-        const sidebarEmail = document.getElementById('sidebarEmail');
+    //     // Update profile sidebar
+    //     const sidebarInitials = document.getElementById('sidebarInitials');
+    //     const sidebarName = document.getElementById('sidebarName');
+    //     const sidebarEmail = document.getElementById('sidebarEmail');
         const sidebarPlan = document.getElementById('sidebarPlan');
         const subscriptionPlan = document.getElementById('subscriptionPlan');
         
