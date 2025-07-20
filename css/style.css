@@ -1,11 +1,14 @@
 /* Add these new styles to your existing style.css */
 :root {
-    --primary-color: #6a11cb;
-    --secondary-color: #2575fc;
-    --accent-color: #2ecc71;
-    --dark-color: #2c3e50;
-    --light-color: #f8f9fc;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-gradient: linear-gradient(90deg, #001F5A, #788bb3);
+    --primary-color: #001F5A;
+    --primary-light: #002b80;
+    --primary-dark: #001333;
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray: #6c757d;
+    --light-gray: #f8f9fa;
+    --medium-gray: #adb5bd;
     --transition: all 0.3s ease;
 }
 /* Navbar Styles */
@@ -34,7 +37,7 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--dark-color);
+    color: 001F5A;
     padding: 5px 10px 5px 0;
     margin-right: 10px;
 }
@@ -69,7 +72,7 @@
 }
 
 .navbar-menu a {
-    color: var(--dark-color);
+    color: 001F5A;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
@@ -175,7 +178,7 @@
         flex-direction: column;
         align-items: flex-start;
         display: none;
-        background: white;
+        background: #f8f9fc;
         padding: 0;
         margin: 0;
     }
@@ -197,7 +200,7 @@
     }
 
     .navbar-menu a:hover {
-        background: #f5f5f5;
+        background: #001F5A;
     }
 }
 
@@ -221,8 +224,8 @@
 #home {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
+    background:#f8f9fc;
+    color: #001F5A;
     /* text-align: center; */
     padding: 100px 0px;
     /* justify-content: center; */
@@ -263,7 +266,8 @@
 .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 10px;
-    background: white;
+    background: #001F5A;
+    color: #001F5A;
     -webkit-background-clip: text;
     background-clip: text;
     justify-content: center;
@@ -293,6 +297,7 @@
 
 .hero-btns {
     display: flex;
+    color: #001F5A;
     gap: 15px;
     animation: fadeInUp 1s ease 0.4s forwards;
     opacity: 0;
@@ -308,7 +313,7 @@
 }
 
 .feature-card {
-    background: white;
+    background: #f8f9fc;
     border-radius: 12px;
     padding: 30px;
     box-shadow: var(--shadow);
@@ -355,7 +360,7 @@
 .feature-card:hover .feature-icon {
     transform: rotateY(180deg);
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    color:#6c757d;
 }
 
 .feature-card h3 {
@@ -395,7 +400,7 @@
     align-items: center;
     gap: 40px;
     margin-top: 30px;
-    background: white;
+    background: #f8f9fc;
     border-radius: 12px;
     padding: 40px;
     box-shadow: var(--shadow);
@@ -459,66 +464,6 @@
     color: var(--secondary-color);
 }
 
-/* Pricing Cards with Hover Effects */
-.pricing-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.pricing-card {
-    background: white;
-    border-radius: 12px;
-    padding: 40px 30px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
-.pricing-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 25px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    transition: var(--transition);
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.pricing-card:hover::after {
-    height: 10px;
-}
-
-.pricing-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--dark-color);
-}
-
-.price-container {
-    margin-bottom: 30px;
-}
-
-.price {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-.price-period {
-    color: #666;
-    font-size: 0.9rem;
-}
 
 .features-list {
     list-style: none;
@@ -542,47 +487,11 @@
 }
 
 .features-list li.disabled {
-    color: #999;
+    color: #001F5A;
 }
 
 .features-list li.disabled i {
-    color: #ccc;
-}
-
-.pricing-btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.pricing-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    transition: var(--transition);
-    z-index: -1;
-}
-
-.pricing-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.pricing-btn:hover::before {
-    left: 0;
+    color: #001F5A;
 }
 
 /* Image Gallery for Features */
@@ -618,7 +527,7 @@
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: white;
+    color: #001F5A;
     padding: 20px;
     transform: translateY(100%);
     transition: var(--transition);
@@ -677,9 +586,12 @@
     margin: 0 auto;
 }
 
-.hero-content h1,
+.hero-content h1{
+    color: #001F5A;;
+}
 .hero-content p {
     text-align: center;
+   
 }
 
 .Maintitle {
@@ -709,9 +621,7 @@ footer {
 /* Center buttons in hero and other sections */
 .hero-btns,
 .industry-filters,
-.industry-download-container,
-.contact-form button,
-.pricing-btn {
+.industry-download-container{
     justify-content: center;
     text-align: center;
     margin: 0 auto;
@@ -720,8 +630,7 @@ footer {
 /* Improve buttons appearance */
 .primary-btn,
 .outline-btn,
-.nav-btn,
-.pricing-btn {
+.nav-btn{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -738,8 +647,8 @@ footer {
 
 /* Primary button style */
 .primary-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
+    background: #001F5A;
+    color:#FFFFFF;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -751,107 +660,21 @@ footer {
 /* Outline button style */
 .outline-btn {
     background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
+    border: 2px solid #001F5A;
+    color: #001F5A;
 }
 
 .outline-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* Pricing and CTA buttons consistency */
-.pricing-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    font-size: 1rem;
-    padding: 12px 24px;
-    border-radius: 6px;
-    width: auto;
-}
 
-.pricing-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Contact Section */
-#contact .section-title {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-.contact-form,
-.contact-info {
-    background: white;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    padding: 30px;
-    flex: 1 1 300px;
-    min-width: 280px;
-}
-
-.contact-form h3,
-.contact-info h3 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 0.95rem;
-}
-
-.contact-form button {
-    align-self: center;
-    margin-top: 10px;
-}
-
-/* Contact Info Items */
-.contact-item {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    align-items: center;
-}
-
-.contact-item i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-}
-
-.contact-item-content h4 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-}
 
 /* Footer */
 footer {
     background: var(--dark-color);
-    color: white;
+    color: #001F5A;
     padding: 40px 20px;
     text-align: center;
 }
@@ -892,18 +715,19 @@ footer {
 }
 
 .footer-links a {
-    color: #ddd;
+    color: #001F5A;
     text-decoration: none;
     font-size: 0.95rem;
 }
 
 .footer-links a:hover {
-    color: #fff;
+    color:#6c757d;
 }
 
 .newsletter-form {
     display: flex;
     margin-top: 10px;
+    
 }
 
 .newsletter-form input {
@@ -911,12 +735,13 @@ footer {
     padding: 8px;
     border: none;
     border-radius: 6px 0 0 6px;
+    border-color: #001F5A;
 }
 
 .newsletter-form button {
     background: var(--primary-color);
     border: none;
-    color: white;
+    color: #001F5A;
     padding: 8px 12px;
     border-radius: 0 6px 6px 0;
     cursor: pointer;
@@ -932,13 +757,13 @@ footer {
 }
 
 .footer-links-bottom a {
-    color: #aaa;
+    color: #001F5A;
     text-decoration: none;
     font-size: 0.85rem;
 }
 
 .footer-links-bottom a:hover {
-    color: #fff;
+    color:#6c757d;
 }
 
 /* Profile Sidebar */
@@ -948,7 +773,7 @@ footer {
     top: 0;
     width: 300px;
     height: 100%;
-    background: #fff;
+    background:#6c757d;
     box-shadow: var(--shadow);
     padding: 20px;
     z-index: 1001;
@@ -985,7 +810,7 @@ footer {
 }
 
 .stat-card {
-    background: #f8f8f8;
+    background: #f8f9fc;
     padding: 10px;
     margin: 5px 0;
     border-radius: 6px;
@@ -997,7 +822,7 @@ footer {
     bottom: -300px;
     right: 20px;
     width: 300px;
-    background: #fff;
+    background:#f8f9fc;
     box-shadow: var(--shadow);
     padding: 20px;
     z-index: 1002;
@@ -1019,7 +844,7 @@ footer {
 .rating-stars {
     text-align: center;
     font-size: 1.5rem;
-    color: #ddd;
+    color: #001F5A;
 }
 
 .rating-stars i.fas {
@@ -1097,7 +922,7 @@ footer {
 .highlight-card h3 {
     font-size: 1.4rem;
     margin-bottom: 12px;
-    color: white;
+    color: #001F5A;
 }
 
 .highlight-card p {
