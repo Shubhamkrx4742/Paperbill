@@ -1390,3 +1390,144 @@ footer {
 .rectangular-btn i {
   font-size: 1.5rem;
 }
+
+  /* Business Efficiency Section */
+        .efficiency-section {
+            padding: 80px 0;
+            background: var(--gradient);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: #f0dbc0;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header p {
+            color: var(--white);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .efficiency-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .efficiency-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .efficiency-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .efficiency-text {
+            flex: 1;
+        }
+
+        .efficiency-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #f0dbc0;
+        }
+
+        .efficiency-text p {
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .efficiency-list {
+            list-style: none;
+            margin-bottom: 30px;
+            color: #f0dbc0;
+        }
+
+        .efficiency-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .efficiency-list li i {
+            color: var(--success-color);
+            margin-top: 4px;
+        }
+
+        .efficiency-content {
+            margin-bottom: 60px;
+            /* Increased from previous value */
+        }
+
+        .efficiency-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 992px) {
+
+            .efficiency-content,
+            .efficiency-content.reverse {
+                flex-direction: column;
+            }
+        }
+
+        /* Value Section */
+        .value-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 50px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .value-card p {
+            color: var(--white);
+        }
