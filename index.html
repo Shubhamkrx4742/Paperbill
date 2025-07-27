@@ -456,27 +456,39 @@
         });
         
         // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+            const faqItems = document.querySelectorAll('.faq-item');
             
-            question.addEventListener('click', () => {
-                // Close all other FAQ items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Toggle icon rotation
+                    const icon = question.querySelector('i.fas');
+                    if (icon) {
+                        icon.classList.toggle('rotated');
                     }
                 });
-                
-                // Toggle current item
-                item.classList.toggle('active');
+            });
+            
+            // View More button functionality
+            const viewMoreBtn = document.querySelector('.faq-cta .primary-btn');
+            viewMoreBtn.addEventListener('click', () => {
+                alert('More FAQs would load here. This is a functional demo.');
             });
         });
         
         // Carousel functionality
         // (Implementation omitted for brevity, but would be added here)
-    </script>
     </script>
     <script src="js/common.js"></script>
     <script src="js/carousel.js"></script>
