@@ -13,11 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    document.querySelector('.floating-btn').addEventListener('click', function() {
-  // Add your download functionality here
-  window.location.href = '#download'; // or your download link
-});
-
     const industryFilters = document.querySelectorAll('.industry-filter');
     const industryContents = document.querySelectorAll('.industry-content');
     
