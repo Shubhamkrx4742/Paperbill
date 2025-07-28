@@ -443,15 +443,15 @@
     
 
     <script>
-        // // Mobile Navigation
-        // const navbarToggle = document.getElementById('navbarToggle');
-        // const navbarMenu = document.getElementById('navbarMenu');
+        // Mobile Navigation
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
         
-        // navbarToggle.addEventListener('click', () => {
-        //     navbarMenu.classList.toggle('active');
-        //     navbarToggle.innerHTML = navbarMenu.classList.contains('active') ? 
-        //         '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        // });
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            navbarToggle.innerHTML = navbarMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
         
         // Industry Tabs
         const industryFilters = document.querySelectorAll('.industry-filter');
