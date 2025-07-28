@@ -1017,9 +1017,9 @@ body {
     }
     
     .rectangular-btn {
-        width: 35%;
+        width: 28%;
     }
-}
+
 
 /* Animations */
 @keyframes fadeIn {
