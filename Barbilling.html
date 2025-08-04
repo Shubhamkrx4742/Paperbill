@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Existing CSS with responsive modifications */
         :root {
             --primary-blue: #003087;
             --secondary-blue: #4B6CB7;
@@ -39,6 +41,15 @@
             max-width: 1150px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        .container1 {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
         }
 
         /* Hero Section */
@@ -137,6 +148,12 @@
         }
 
         @media (min-width: 768px) {
+            .feature-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
             .feature-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -281,7 +298,7 @@
             margin-top: 4px;
         }
 
-        /* Exclusive features efficiency Section1 - Made Responsive */
+        /* Exclusive features efficiency Section1 */
         .efficiency-section1 {
             padding: 60px 0;
             background: rgb(255, 255, 255);
@@ -296,7 +313,6 @@
             font-size: 2rem;
             color: var(--primary-blue);
             margin-bottom: 15px;
-            padding: 0 15px;
         }
 
         .section1-header p {
@@ -305,7 +321,6 @@
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.1rem;
-            padding: 0 15px;
         }
 
         .efficiency1-content {
@@ -313,7 +328,6 @@
             flex-direction: column;
             gap: 30px;
             margin-bottom: 60px;
-            padding: 0 15px;
         }
 
         @media (min-width: 992px) {
@@ -328,15 +342,19 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            text-align: center;
         }
 
         .efficiency1-image img {
             width: 100%;
-            max-width: 500px;
             height: auto;
-            display: block;
-            margin: 0 auto;
+            /* display: block; */
+            border: 4px solid #090808;
+            /* subtle light gray border */
+            border-radius: 12px;
+            /* optional: smooth rounded corners */
+            z-index: 2;
+            box-shadow: 20px 20px 10px rgba(88, 88, 90, 0.5);
+
         }
 
         .efficiency1-text {
@@ -347,33 +365,18 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary-blue);
-            text-align: center;
-        }
-
-        @media (min-width: 992px) {
-            .efficiency1-text h3 {
-                text-align: left;
-            }
         }
 
         .efficiency1-text p {
             color: var(--text-gray);
             margin-bottom: 20px;
             line-height: 1.8;
-            text-align: center;
-        }
-
-        @media (min-width: 992px) {
-            .efficiency1-text p {
-                text-align: left;
-            }
         }
 
         .efficiency1-list {
             list-style: none;
             margin-bottom: 30px;
             color: var(--text-gray);
-            padding: 0 10px;
         }
 
         .efficiency1-list li {
@@ -381,18 +384,11 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px dashed #e0e0e0;
-        }
-
-        .efficiency1-list li:last-child {
-            border-bottom: none;
         }
 
         .efficiency1-list li i {
             color: var(--primary-blue);
-            margin-top: 6px;
-            min-width: 24px;
+            margin-top: 4px;
         }
 
         /* Testimonials */
@@ -621,7 +617,7 @@
             resize: vertical;
         }
 
-        /* FAQ Section - Made Responsive */
+        /* FAQ Section */
         #faq {
             padding: 60px 0;
             background: var(--white);
@@ -748,7 +744,7 @@
             border: none;
             padding: 14px 30px;
             font-size: 16px;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
@@ -804,59 +800,39 @@
             box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
         }
 
-        /* Mobile Navigation Toggle */
-        .mobile-nav-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2000;
-            background: var(--primary-blue);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+
 
         /* Responsive adjustments */
         @media (max-width: 767px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .section-title h2 {
                 font-size: 1.8rem;
             }
-            
-            .section-header h2, .section1-header h2 {
+
+            .section-header h2,
+            .section1-header h2 {
                 font-size: 1.6rem;
             }
-            
-            .efficiency-text h3, .efficiency1-text h3 {
+
+            .efficiency-text h3,
+            .efficiency1-text h3 {
                 font-size: 1.5rem;
             }
-            
+
             .carousel-item img {
                 height: 250px;
             }
-            
+
             .testimonial-author h4 {
                 font-size: 1.1rem;
             }
-            
+
             .faq-header h2 {
                 font-size: 1.5rem;
             }
-
-            .efficiency1-list li {
-                font-size: 0.95rem;
-            }
-
             .faq-question h4 {
                 font-size: 1rem;
             }
@@ -865,10 +841,6 @@
 </head>
 
 <body>
-    <!-- Mobile Navigation Toggle -->
-    <button class="mobile-nav-toggle" id="mobileNavToggle">
-        <i class="fas fa-bars"></i>
-    </button>
 
     <!-- Hero Section -->
     <section id="home">
@@ -1269,8 +1241,8 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq">
-        <div class="container">
+        <section id="faq">
+        <div class="container1">
             <div class="faq-header">
                 <h2>Frequently Asked Questions</h2>
                 <p>Find answers to common questions about PaperBill for automobile businesses</p>
@@ -1336,7 +1308,8 @@
             </div>
 
             <div class="faq-cta">
-                <button class="primary-btn">
+                <button class="primary-btn" 
+                a href="Barbilling.html" onclick="window.location.href='Barbilling.html';">
                     <i class="fas fa-question-circle"></i> View More FAQs
                 </button>
             </div>
@@ -1344,55 +1317,42 @@
     </section>
 
     <script>
-        // Mobile Navigation Toggle
-        document.getElementById('mobileNavToggle').addEventListener('click', function() {
-            this.querySelector('i').classList.toggle('fa-bars');
-            this.querySelector('i').classList.toggle('fa-times');
-            // Add your mobile menu functionality here
-        });
+        
 
         // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
+       const faqItems = document.querySelectorAll('.faq-item');
+
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            const icon = question.querySelector('i');
 
             question.addEventListener('click', () => {
                 // Close all other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
-                        const otherAnswer = otherItem.querySelector('.faq-answer');
-                        const otherIcon = otherItem.querySelector('.faq-question i');
-                        otherAnswer.style.maxHeight = null;
-                        otherAnswer.style.padding = "0 20px";
-                        otherIcon.classList.remove('fa-minus');
-                        otherIcon.classList.add('fa-plus');
+                        const icon = otherItem.querySelector('.faq-question i');
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
                     }
                 });
 
                 // Toggle current item
-                const isActive = item.classList.toggle('active');
-                if (isActive) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                    answer.style.padding = "20px";
+                item.classList.toggle('active');
+                const icon = question.querySelector('i');
+                if (item.classList.contains('active')) {
                     icon.classList.remove('fa-plus');
                     icon.classList.add('fa-minus');
                 } else {
-                    answer.style.maxHeight = null;
-                    answer.style.padding = "0 20px";
                     icon.classList.remove('fa-minus');
                     icon.classList.add('fa-plus');
                 }
             });
         });
 
+
         // Carousel Functionality
         document.addEventListener('DOMContentLoaded', function () {
             const carousel = document.querySelector('.carousel');
-            if (!carousel) return;
-            
             const inner = carousel.querySelector('.carousel-inner');
             const items = carousel.querySelectorAll('.carousel-item');
             const prevBtn = carousel.querySelector('.carousel-control.prev');
@@ -1446,11 +1406,12 @@
         });
 
         // Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! We will contact you soon.');
             this.reset();
         });
     </script>
 </body>
+
 </html>
