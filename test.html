@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NC2IA-2025 — AMC Engineering College (Clone)</title>
+  <meta name="description" content="National Conference on Computational Intelligence and Applications - NC2IA 2025 (clone)" />
+  <meta name="theme-color" content="#00205a">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#fff; --accent:#f28c38; --dark:#00205a; --muted:#6b7280; --glass: rgba(255,255,255,0.6);
+      --maxw:1100px;
+      --radius:12px;
+    }
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#0f1724;background:var(--bg)}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:18px}
+
+    /* Header */
+    header.site-header{background:linear-gradient(90deg,var(--dark),#001b48);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+    .topbar{display:flex;align-items:center;gap:18px;padding:16px 18px}
+    .logo{display:flex;align-items:center;gap:14px}
+    .logo img{width:72px;height:72px;object-fit:contain;border-radius:8px}
+    .brand{line-height:1}
+    .brand h1{font-size:18px;letter-spacing:0.6px;margin-bottom:2px;font-weight:700}
+    .brand p{font-size:12px;opacity:0.9;margin-top:2px}
+
+    nav{margin-left:auto}
+    .nav-list{display:flex;gap:10px;align-items:center}
+    .nav-list a{padding:8px 12px;border-radius:8px;color:rgba(255,255,255,0.95);font-weight:600;transition:all .18s ease}
+    .nav-list a:hover{transform:translateY(-2px);background:rgba(255,255,255,0.04)}
+    .nav-list a.active{background:rgba(255,255,255,0.06);box-shadow:inset 0 -2px 0 rgba(255,255,255,0.06)}
+    .btn{background:var(--accent);color:#fff;padding:9px 14px;border-radius:10px;font-weight:700;box-shadow:0 8px 18px rgba(242,140,56,0.18);transition:transform .18s ease,box-shadow .18s ease}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(2,6,23,0.14)}
+
+    .hamburger{display:none;border:0;background:transparent;color:#fff;font-size:22px}
+
+    /* hero */
+    .hero{padding:38px 18px 46px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .hero h2{font-size:36px;color:#fff;margin-bottom:6px}
+    .hero h3{font-size:18px;color:#ffdca3;margin-bottom:10px;font-weight:600}
+    .hero p.lead{max-width:900px;margin:12px auto;color:#e7f0ff;font-size:15px}
+    .hero .actions{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+    /* sections */
+    main{padding:18px}
+    section{padding:26px 0}
+    .section-title{font-size:20px;color:var(--dark);margin-bottom:12px}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+
+    .grid-2{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    .list{margin-top:8px}
+    .list li{margin:8px 0;color:#0b1220}
+    .meta{font-size:13px;color:var(--muted)}
+
+    /* schedule */
+    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .slot{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fbfdff,#f6f9ff);border:1px solid #e6f0ff;transition:transform .18s ease,box-shadow .18s ease}
+    .slot:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(2,6,23,0.06)}
+
+    /* aside small card */
+    .aside-card{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .qr{width:220px;border-radius:10px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+    .qr:hover{transform:scale(1.06);box-shadow:0 14px 30px rgba(2,6,23,0.08)}
+
+    /* advisory list columns */
+    .two-col-list{columns:2;column-gap:20px}
+
+    footer{padding:18px 0;margin-top:18px}
+    footer .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    footer .muted{color:var(--muted);font-size:13px}
+
+    /* back to top */
+    .back-to-top{position:fixed;right:18px;bottom:18px;background:var(--dark);color:#fff;padding:10px;border-radius:10px;display:none;z-index:80;box-shadow:0 10px 30px rgba(2,6,23,0.18);cursor:pointer}
+
+    /* responsive */
+    @media (max-width:980px){
+      .grid-2{grid-template-columns:1fr}
+      .nav-list{display:none}
+      .hamburger{display:block;margin-left:auto}
+    }
+    @media (max-width:420px){
+      .logo img{width:56px;height:56px}
+      .brand h1{font-size:15px}
+      .hero h2{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container topbar">
+      <div class="logo">
+        <img src="https://nc2ia-mca.github.io/Conf-2025/AMCEC11.png" alt="AMC logo">
+        <div class="brand">
+          <h1>AMC ENGINEERING COLLEGE</h1>
+          <p>DEPARTMENT OF MCA</p>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav>
+        <div class="nav-list" id="nav">
+          <a href="#about">About Conference</a>
+          <a href="#topics">Topics</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#keynote">Keynote Speaker</a>
+          <a href="#patrons">Patrons</a>
+          <a href="#register" class="btn">Register</a>
+          <a href="#advisory">Advisory Committee</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container hero">
+      <h2>NC2IA-2025</h2>
+      <h3>National Conference on Computing, Innovation, and AI</h3>
+      <p class="lead">August 22, 2025 • Bengaluru, India — The National Conference on Computational Intelligence and Applications (NC2IA) brings together researchers, practitioners and academicians to discuss advancements, challenges, and future directions in computational intelligence.</p>
+      <div class="actions">
+        <a class="btn" href="https://forms.gle/nMkNwpxyVXpbi3ex9" target="_blank" rel="noopener">Register Now</a>
+        <a class="btn" href="https://nc2ia-mca.github.io/Conf-2025/Broucher.pdf" target="_blank" rel="noopener" style="background:#004aa3">Download PDF</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h3 class="section-title">About the Conference</h3>
+      <div class="card grid-2">
+        <div>
+          <p>The National Conference on Computational Intelligence and Applications (NC2IA) brings together researchers, practitioners and academicians to discuss advancements, challenges, and future directions in the field of computational intelligence. This event aims to foster collaboration and knowledge sharing among professionals from various domains of artificial intelligence and machine learning.</p>
+
+          <p style="margin-top:12px">In addition to oral presentations and an innovation exhibition, this event will provide an opportunity for researchers and students to showcase their innovative products. The primary objectives include knowledge exchange, research advancement, networking, and publication opportunities.</p>
+
+          <h4 style="margin-top:12px">Conference Topics</h4>
+          <ul class="list">
+            <li>Artificial Intelligence and ML</li>
+            <li>Fuzzy Systems and Neural Networks</li>
+            <li>Data Science, Big Data, Cloud Computing</li>
+            <li>Bioinformatics, Biomedical engineering</li>
+            <li>Computer Graphics & Virtual Reality</li>
+            <li>Optimization and Computational Intelligence</li>
+            <li>Database & Information Systems</li>
+            <li>Forensic data analysis</li>
+            <li>Robotics and Data Analytics</li>
+          </ul>
+        </div>
+
+        <aside>
+          <div class="card aside-card">
+            <img class="qr" src="https://nc2ia-mca.github.io/Conf-2025/QR-Register.jpg" alt="QR register">
+            <p class="meta">Scan to register</p>
+            <a href="mailto:nc.mca@amceducation.in" class="meta">nc.mca@amceducation.in</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h3 class="section-title">Event Schedule — Aug 22, 2025</h3>
+      <div class="card">
+        <div class="schedule">
+          <div>
+            <h4>Forenoon</h4>
+            <div class="slot">09:00 AM – Inauguration Ceremony</div>
+            <div class="slot">10:00 AM – Keynote: “AI in the Next Decade”</div>
+            <div class="slot">11:30 AM – Tea Break</div>
+            <div class="slot">11:45 AM – Continue: Keynote</div>
+            <div class="slot">01:00 PM – Lunch Break</div>
+          </div>
+
+          <div>
+            <h4>Afternoon</h4>
+            <div class="slot">02:00 PM – Paper Presentations</div>
+            <div class="slot">03:30 PM – Valedictory Function</div>
+            <div class="slot">04:00 PM – Certificate Distribution</div>
+            <div class="slot">04:30 PM – National Anthem & Refreshment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="keynote">
+      <h3 class="section-title">Our Keynote Speaker</h3>
+      <div class="card">
+        <h4>Dr. Manjunath Ramachandra</h4>
+        <p>Principal consultant, Frontier technologies group of CTO office – Wipro Limited, Bangalore. Speaking on "AI & Humanity" at 10 AM.</p>
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+          <img src="https://nc2ia-mca.github.io/Conf-2025/DrManjunath.jpg" alt="Dr Manjunath" style="width:120px;height:120px;border-radius:10px;object-fit:cover;box-shadow:0 10px 24px rgba(2,6,23,0.06)">
+          <div>
+            <p class="meta">Principal consultant, Frontier technologies group of CTO - Wipro Limited, Bangalore</p>
+            <p style="margin-top:6px">Keynote at 10:00 AM — "AI & Humanity"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patrons">
+      <h3 class="section-title">Chief Patrons & Patrons</h3>
+      <div class="card">
+        <p><strong>Dr K R Paramahamsa</strong> — Chairman, AMC Group of Institutions</p>
+        <p><strong>Mr Rahul Kalluri</strong> — Executive Vice President, AMC Group of Institutions</p>
+        <p>Plus other patrons and dignitaries listed in the brochure.</p>
+      </div>
+    </section>
+
+    <section id="register">
+      <h3 class="section-title">Registration & Payment Details</h3>
+      <div class="card grid-2">
+        <div>
+          <p><strong>Early Bird Registration:</strong> Until Aug 14, 2025</p>
+          <p><strong>Final Deadline:</strong> Aug 18, 2025</p>
+
+          <h4 style="margin-top:12px">Registration Fee (INR)</h4>
+          <table style="width:100%;margin-top:8px;border-collapse:collapse">
+            <tr><td style="padding:8px 0">Participation</td><td style="text-align:right;padding:8px 0">₹ 300</td></tr>
+            <tr><td style="padding:8px 0">Presentation with ISBN-Proceedings</td><td style="text-align:right;padding:8px 0">₹ 500</td></tr>
+            <tr><td style="padding:8px 0">Participation with Journal Publication</td><td style="text-align:right;padding:8px 0">₹ 800</td></tr>
+          </table>
+
+          <h4 style="margin-top:12px">Bank Account Details</h4>
+          <p class="meta">Account Name: A M C Eng College<br>Bank: Union Bank of India<br>A/C No: 435302010006932<br>IFSC: UBIN0543535<br>Branch: Kalkere, Bangalore</p>
+
+          <p style="margin-top:8px">After payment, upload payment proof via the registration form or email <a href="mailto:nc.mca@amceducation.in">nc.mca@amceducation.in</a></p>
+
+          <p style="margin-top:12px"><a class="btn" href="https://forms.gle/nMkNwpxyVXpbi3ex9" target="_blank">Upload Payment / Register</a></p>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h4>Conference Brochure</h4>
+            <p>Two-page brochure with topics, deadlines and contacts.</p>
+            <p style="margin-top:8px"><a href="https://nc2ia-mca.github.io/Conf-2025/Broucher.pdf" target="_blank" class="btn" style="background:#004aa3">Download Brochure</a></p>
+            <p style="margin-top:12px;font-size:13px">Send your paper to: <a href="mailto:nc.mca@amceducation.in">nc.mca@amceducation.in</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="advisory">
+      <h3 class="section-title">Advisory Committee</h3>
+      <div class="card">
+        <p>Listing of advisory members and HODs. (Content copied from the brochure for clarity)</p>
+        <ul class="list two-col-list">
+          <li>Dr. Karunakar — Principal, City Engineering College</li>
+          <li>Dr. Somya Naik — HOD-CSE, City Engg</li>
+          <li>Dr. V. Mareeswari — HOD-CSE, AMCEC</li>
+          <li>Dr. Mini V — HOD-Physics, AMCEC</li>
+          <li>Dr. V. Venkatalakshmi — HOD-Chemistry, AMCEC</li>
+          <li>... and many more (see brochure)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3 class="section-title">Contact Coordinators</h3>
+      <div class="card">
+        <p><strong>Dr. Charles Arockiraj</strong><br>Phone: 98944-72531</p>
+        <p><strong>Prof. Gunasekaran K</strong><br>Phone: 98945-52121</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container row">
+      <div class="muted">© 2025 NC2IA. All rights reserved.</div>
+      <div class="muted">Designed — AMC Engineering College • <a href="mailto:nc.mca@amceducation.in">nc.mca@amceducation.in</a></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+  <script>
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', ()=>{
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      if(window.getComputedStyle(nav).display === 'flex'){
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02))';
+        nav.style.position = 'absolute';
+        nav.style.right = '18px';
+        nav.style.top = '88px';
+        nav.style.padding = '12px';
+        nav.style.borderRadius = '10px';
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-list a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          // smooth scroll
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+        if(window.innerWidth <= 980){
+          nav.style.display = 'none';
+          hamburger.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+
+    // Scroll spy to mark active nav link
+    const sections = Array.from(document.querySelectorAll('main section'));
+    const navLinks = Array.from(document.querySelectorAll('.nav-list a'));
+    function onScroll(){
+      const scrollPos = window.scrollY + 120; // offset
+      sections.forEach(sec=>{
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        const link = document.querySelector('.nav-list a[href="#'+id+'"]');
+        if(scrollPos >= top && scrollPos < bottom){
+          navLinks.forEach(n=>n.classList.remove('active'));
+          if(link) link.classList.add('active');
+        }
+      });
+
+      // header shadow toggle
+      const header = document.querySelector('.site-header');
+      if(window.scrollY > 8) header.style.boxShadow = '0 8px 24px rgba(2,6,23,0.12)';
+      else header.style.boxShadow = '0 6px 18px rgba(2,6,23,0.08)';
+
+      // back-to-top button
+      const btt = document.getElementById('backToTop');
+      if(window.scrollY > 300) btt.style.display = 'block'; else btt.style.display = 'none';
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // back to top
+    document.getElementById('backToTop').addEventListener('click', ()=>{
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // ensure nav visible on resize
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 980){
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'row';
+        nav.style.position = '';
+        nav.style.right = ''; nav.style.top = ''; nav.style.padding = '';
+      } else {
+        nav.style.display = 'none';
+      }
+    });
+
+    // small accessibility improvement: focus outlines
+    document.addEventListener('keyup', (e)=>{
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
