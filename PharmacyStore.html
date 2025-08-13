@@ -321,96 +321,179 @@
         }
 
         /* Exclusive features efficiency Section1 */
-        .efficiency-section1 {
-            padding: 60px 0;
-            background: rgb(255, 255, 255);
-        }
+.efficiency-section1 {
+    padding: 60px 0;
+    background: #fff;
+}
 
-        .section1-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+.section1-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 15px;
+}
 
-        .section1-header h2 {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
+.section1-header h2 {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
 
-        .section1-header p {
-            color: var(--text-gray);
-            font-weight: bold;
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
+.section1-header p {
+    color: var(--text-gray);
+    font-weight: bold;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 
-        .efficiency1-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 1px;
-        }
+/* Main Content */
+/* Exclusive features efficiency Section1 */
+.efficiency-section1 {
+    padding: 60px 0;
+    background: #fff;
+}
 
-        @media (min-width: 992px) {
-            .efficiency1-content {
-                flex-direction: row;
-                align-items: center;
-                gap: 50px;
-            }
-        }
+.section1-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 15px;
+}
 
-        .efficiency1-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+.section1-header h2 {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
 
-        .efficiency1-image img {
-            width: 6%;
-            height: auto;        
-            border-radius: 10px;
-        
-            /* optional: smooth rounded corners */
-            z-index: 2;
-            /* box-shadow: 20px 20px 10px rgba(88, 88, 90, 0.5); */
+.section1-header p {
+    color: var(--text-gray);
+    font-weight: bold;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 
-        }
+/* Main Content */
+.efficiency1-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
-        .efficiency1-text {
-            flex: 1;
-        }
+@media (min-width: 992px) {
+    .efficiency1-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+    }
+}
 
-        .efficiency1-text h3 {
-            text-align: left;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-        }
+/* Text Section */
+.efficiency1-text {
+    flex: 1;
+    padding: 0 15px;
+}
 
-        .efficiency1-text p {
-            color: var(--text-gray);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
+.efficiency1-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+    line-height: 1.3;
+}
 
-        .efficiency1-list {
-            list-style: none;
-            margin-bottom: 30px;
-            color: var(--text-gray);
-        }
+.efficiency1-text p {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 1rem;
+}
 
-        .efficiency1-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
+/* List */
+.efficiency1-list {
+    list-style: none;
+    margin-bottom: 30px;
+    color: var(--text-gray);
+    padding-left: 0;
+    max-width: 600px;
+}
 
-        .efficiency1-list li i {
-            color: var(--primary-blue);
-            margin-top: 4px;
-        }
+.efficiency1-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center; /* Align icon and text */
+    gap: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: normal; /* Allow wrapping, but keep spacing clean */
+}
+
+.efficiency1-list li i {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Images inside section (if any) */
+.efficiency1-image img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .efficiency1-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .efficiency1-text h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .efficiency1-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .efficiency1-list {
+        max-width: 100%;
+    }
+
+    .efficiency1-list li {
+        justify-content: flex-start; /* Keep icon left, text aligned */
+        font-size: 0.95rem;
+        text-align: left;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .section1-header h2 {
+        font-size: 1.5rem;
+    }
+    .efficiency1-text h3 {
+        font-size: 1.2rem;
+    }
+    .efficiency1-text p,
+    .efficiency1-list li {
+        font-size: 0.9rem;
+    }
+}
+
+
+
 
         /* Testimonials */
         #testimonials {
@@ -1195,10 +1278,7 @@
                                                             <li><i class="fas fa-check-circle"></i> Compliance with
                                                                 HIPAA and GDPR.</li>
                                                         </ul>
-                                                        <img src="images/Benefits.png" style="margin-right: 18%;">
-                                                        <img src="images/tax1.png" style="margin-right: 18%;">
-                                                        <img src="images/reports.png" style="margin-right: 18%;">
-                                                        <img src="images/file.png" style="margin-right: 18%;">
+                                                    
                                                         
                                                     </div>
                                                 </div>
@@ -1699,14 +1779,29 @@
 
     .speaker-card {
         width: 95%;
-        height: auto; /* Remove fixed height */
+        height: auto; /* Let it grow with content */
         margin-bottom: 30px;
+        perspective: none; /* No flip needed on mobile */
+    }
+
+    .card-inner {
+        height: auto;
+        transform: none !important; /* Remove flip transform */
+    }
+
+    .card-front,
+    .card-back {
+        position: relative;
+        height: auto;
+        transform: none !important;
+        backface-visibility: visible;
     }
 
     .card-front img {
-        height: auto; /* Don't stretch full height */
-        max-height: 200px; /* Limit image height */
+        height: auto;
+        max-height: 200px;
         object-fit: contain;
+        width: 100%;
     }
 
     .card-front h3 {
@@ -1718,6 +1813,7 @@
     .card-back {
         padding: 15px;
         font-size: 14px;
+        margin-top: 15px; /* space between front and back */
     }
 
     .card-back h3 {
@@ -1738,6 +1834,8 @@
         font-size: 16px;
     }
 }
+
+
 
 </style>
 
